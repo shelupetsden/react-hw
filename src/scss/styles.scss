@@ -1,0 +1,217 @@
+@use "colors" as *;
+@use "mixins" as *;
+@use "variables" as *;
+@import url(https://db.onlinewebfonts.com/c/e9ba66ccde789f42c37813c0c54731e9?family=Montreal+Bold);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-main;
+}
+
+span {
+  color: $light-gray;
+  font-size: $main-font-size;
+  line-height: 1.5;
+  @include firstUpperLetter();
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1, h2 {
+  @include firstUpperLetter();
+}
+
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+
+@media screen and (max-width: 839.9px) {
+  .inner-first-left-block,
+  .inner-first-right-block {
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  .inner-first-left-block {
+    position: relative;
+    background-size: contain;
+
+    header {
+      justify-content: center;
+    }
+  }
+
+  .inner-second-left-block {
+    @include cardImage(310px, "image-about-dark.jpg", 100%);
+  }
+  .inner-second-right-block {
+    @include cardImage(310px, "image-about-light.jpg", 100%);
+  }
+
+  .inner-second-center-block {
+    flex-basis: 100%;
+  }
+
+  .arrows {
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 840px) {
+  .inner-first-left-block {
+    flex-basis: 65%;
+    background-size: cover;
+  }
+
+  .inner-first-right-block {
+    flex-basis: 35%;
+    position: relative;
+  }
+
+  .inner-second-left-block {
+    @include cardImage(200px, "image-about-dark.jpg");
+  }
+
+  .inner-second-right-block {
+    @include cardImage(200px, "image-about-light.jpg");
+  }
+
+  .inner-second-center-block {
+    flex-basis: 50%;
+  }
+
+  .arrows {
+    left: 0;
+  }
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1240px;
+  min-width: 400px;
+  margin: 0 auto;
+
+  .main-first-row-block,
+  .main-second-row-block {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .main-first-row-block {
+    .inner-first-left-block {
+      display: flex;
+      flex-wrap: wrap;
+      height: 500px;
+      background: url("../images/desktop-image-hero-1.jpg") no-repeat;
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: baseline;
+        width: 100%;
+
+        div {
+          display: flex;
+          align-items: center;
+          padding: 30px;
+          gap: $gap;
+
+          ul {
+            display: flex;
+            gap: $gap;
+          }
+
+          .logo, nav ul li a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 35px;
+
+            @include afterElement();
+
+            &:hover {
+              &::after {
+                visibility: visible;
+              }
+            }
+
+            color: $white;
+          }
+
+          .logo {
+            &:hover {
+              &::after {
+                visibility: hidden;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .inner-first-right-block {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: $gapBetweenText;
+      padding: $text-padding;
+
+      .show-now {
+        display: flex;
+        gap: $gapBetweenText;
+        margin-top: $gap;
+
+        a {
+          text-transform: uppercase;
+          font-size: $main-font-size;
+          letter-spacing: 10px;
+          color: $light-gray;
+        }
+
+        svg {
+          opacity: 40%;
+        }
+      }
+
+      .arrows {
+        position: absolute;
+        top: 438px;
+
+        .button-left {
+          @include set-button-style("../images/icon-angle-left.svg");
+        }
+
+        .button-right {
+          @include set-button-style("../images/icon-angle-right.svg");
+        }
+      }
+    }
+  }
+
+  .main-second-row-block {
+    .inner-second-left-block,
+    .inner-second-center-block,
+    .inner-second-right-block {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .inner-second-center-block {
+      flex-direction: column;
+      gap: $gapBetweenText;
+      padding: $text-padding;
+    }
+  }
+}
