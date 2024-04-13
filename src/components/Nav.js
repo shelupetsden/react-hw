@@ -1,9 +1,11 @@
+import {Link} from "react-router-dom";
+
 const Nav = () => {
     const listItems = [
-        {name: "home", url: "#"},
-        {name: "shop", url: "#"},
-        {name: "about", url: "#"},
-        {name: "contact", url: "#"}
+        {name: "home", url: "/home"},
+        {name: "shop", url: "/shop"},
+        {name: "about", url: "/about"},
+        {name: "contact", url: "/contact"}
     ]
     return (
         <nav>
@@ -11,7 +13,7 @@ const Nav = () => {
                 {
                     listItems.map(({name, url}) => (
                         <li key={name}>
-                            <a href={url}>{name}</a>
+                            <Link to={url}>{name}</Link>
                         </li>
                     ))
                 }

@@ -1,9 +1,9 @@
 import FirstRightBlock from "./FirstLeftBlock";
 import FirstLeftBlock from "./FirstRightBlock";
 
-const MainFirstBlock = () => {
+const MainFirstBlock = ({type}) => {
     return (
-        <div className="main-first-row-block">
+        <div className={`main-first-row-block ${type}`}>
             <FirstLeftBlock/>
             <FirstRightBlock/>
         </div>)

@@ -109,11 +109,46 @@ h2 {
   }
 
   .main-first-row-block {
+
+    %common-block {
+      .inner-first-left-block {
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+
+    &.home {
+      @extend %common-block;
+
+      .inner-first-left-block {
+        background-image: url("../images/desktop-image-hero-1.jpg");
+        height: 500px;
+      }
+    }
+
+    &.shop, &.about, &.contact {
+      @extend %common-block;
+
+      .inner-first-left-block {
+        height: 924px;
+      }
+    }
+
+    &.shop .inner-first-left-block {
+      background-image: url("../images/shop.png");
+    }
+
+    &.about .inner-first-left-block {
+      background-image: url("../images/about.png");
+    }
+
+    &.contact .inner-first-left-block {
+      background-image: url("../images/contact.png");
+    }
+
     .inner-first-left-block {
       display: flex;
       flex-wrap: wrap;
-      height: 500px;
-      background: url("../images/desktop-image-hero-1.jpg") no-repeat;
 
       header {
         display: flex;
@@ -161,42 +196,65 @@ h2 {
       }
     }
 
+    &.home {
+      .inner-first-right-block {
+        .arrows {
+          position: absolute;
+          top: 438px;
+
+          .button-left {
+            @include set-button-style("../images/icon-angle-left.svg");
+          }
+
+          .button-right {
+            @include set-button-style("../images/icon-angle-right.svg");
+          }
+        }
+      }
+    }
+
+    &:not(.home) {
+      .arrows {
+        visibility: hidden;
+      }
+    }
+
+
+    &.home {
+      .inner-first-right-block {
+        .show-now {
+          display: flex;
+          gap: $gapBetweenText;
+          margin-top: $gap;
+
+          a {
+            text-transform: uppercase;
+            font-size: $main-font-size;
+            letter-spacing: 10px;
+            color: $light-gray;
+          }
+
+          svg {
+            opacity: 40%;
+          }
+        }
+      }
+    }
+
+    &:not(.home) {
+      .inner-first-right-block {
+        .show-now {
+          visibility: hidden;
+        }
+      }
+    }
+
     .inner-first-right-block {
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
       gap: $gapBetweenText;
       padding: $text-padding;
-
-      .show-now {
-        display: flex;
-        gap: $gapBetweenText;
-        margin-top: $gap;
-
-        a {
-          text-transform: uppercase;
-          font-size: $main-font-size;
-          letter-spacing: 10px;
-          color: $light-gray;
-        }
-
-        svg {
-          opacity: 40%;
-        }
-      }
-
-      .arrows {
-        position: absolute;
-        top: 438px;
-
-        .button-left {
-          @include set-button-style("../images/icon-angle-left.svg");
-        }
-
-        .button-right {
-          @include set-button-style("../images/icon-angle-right.svg");
-        }
-      }
     }
   }
 

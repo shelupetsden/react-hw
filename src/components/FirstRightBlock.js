@@ -9,7 +9,6 @@ const FirstLeftBlock = () => {
                 <Nav/>
             </div>
         </header>
-
     </div>);
 }
 
