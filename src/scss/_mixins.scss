@@ -1,0 +1,44 @@
+@use "colors" as *;
+
+@mixin afterElement {
+  &::after {
+    content: "";
+    width: 25px;
+    height: 2px;
+    background-color: $white;
+    margin-top: 10px;
+    visibility: hidden;
+  }
+}
+
+@mixin button-style($bg-color, $bg-image) {
+  background-color: $bg-color;
+  background-image: url($bg-image);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin cardImage($height:310 px, $imageUrl, $flex-basis:25%) {
+  height: $height;
+  flex-basis: $flex-basis;
+  background: url('../images/#{$imageUrl}') no-repeat;
+  background-size: cover;
+}
+
+@mixin firstUpperLetter {
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+@mixin set-button-style($icon, $color:$black) {
+  width: 62px;
+  height: 62px;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  @include button-style($color, $icon);
+  &:hover {
+    background-color: $gray;
+  }
+}
